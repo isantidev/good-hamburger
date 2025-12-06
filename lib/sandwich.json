@@ -1,5 +1,23 @@
 [
-    { "id": 1, "name": "Burger", "price": 5.0, "imageName": "burger" },
-    { "id": 2, "name": "Egg", "price": 4.5, "imageName": "egg" },
-    { "id": 3, "name": "Bacon", "price": 7.0, "imageName": "egg" }
+    {
+        "id": 1,
+        "name": "Burger",
+        "price": 5.0,
+        "type": "sandwich",
+        "imageName": "burger"
+    },
+    {
+        "id": 2,
+        "name": "Egg",
+        "price": 4.5,
+        "type": "sandwich",
+        "imageName": "egg"
+    },
+    {
+        "id": 3,
+        "name": "Bacon",
+        "price": 7.0,
+        "type": "sandwich",
+        "imageName": "egg"
+    }
 ]
