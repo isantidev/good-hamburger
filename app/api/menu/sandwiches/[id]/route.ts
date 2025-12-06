@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import sandwiches from "@/lib/sandwich.json";
+import { getSandwiches } from "@/lib/data/menu";
 
 export async function GET(
     req: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
     const { id } = await params;
+    const sandwiches = await getSandwiches();
 
     const sandwich = sandwiches.find((s) => s.id === Number(id));
-    console.log(sandwich);
 
     if (!sandwich) {
         return new NextResponse(`Sandwich with ID: ${id} not found`, {

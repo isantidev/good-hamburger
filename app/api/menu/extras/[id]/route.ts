@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import extras from "@/lib/extras.json";
+import { getExtras } from "@/lib/data/menu";
 
 export async function GET(
     req: NextRequest,
@@ -7,8 +7,9 @@ export async function GET(
 ) {
     const { id } = await params;
 
+    const extras = await getExtras();
+
     const extra = extras.find((x) => x.id === Number(id));
-    console.log(extra);
 
     if (!extra) {
         return new NextResponse(`Extra with ID: ${id} not found`, {

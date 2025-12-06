@@ -1,6 +1,7 @@
+import { getExtras } from "@/lib/data/menu";
 import { NextResponse } from "next/server";
-import extras from "@/lib/extras.json";
 
 export async function GET() {
+    const extras = await getExtras();
     return NextResponse.json(extras);
 }
