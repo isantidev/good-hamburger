@@ -1,7 +1,7 @@
+import { getMenuData } from "@/lib/data/menu";
 import { NextResponse } from "next/server";
-import sandwiches from "@/lib/sandwich.json";
-import extras from "@/lib/extras.json";
 
 export async function GET() {
-    return NextResponse.json({ sandwiches, extras });
+    const menu = await getMenuData();
+    return NextResponse.json(menu);
 }
