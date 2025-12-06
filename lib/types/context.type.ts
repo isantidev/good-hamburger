@@ -8,6 +8,6 @@ export interface ContextChildren {
 export interface CartContextType {
     cartItems: (Sandwich | Extra)[];
     addToCart: (item: Sandwich | Extra) => void;
-    removeFromCart: (itemId: number) => void;
+    removeFromCart: (itemId: number, itemType: "sandwich" | "extra") => void;
     clearCart: () => void;
 }
