@@ -34,7 +34,7 @@ export default function MenuContent() {
                     return <ExtraCard key={`extra-${extra.id}`} {...extra} />;
                 })}
             </aside>
-            <section className="w-full row-start-2 @lg:row-start-1 @lg:col-start-1 grid grid-cols-9 gap-4">
+            <section className="w-full grid grid-cols-1 grid-flow-row gap-4 row-start-2 @lg:grid-cols-7 @lg:grid-rows-2 @lg:row-start-1 @lg:col-start-1 [&>*:nth-child(1)]:@lg:col-span-3 [&>*:nth-child(2)]:@lg:col-span-3 [&>*:nth-child(2)]:@lg:col-start-5 [&>*:nth-child(3)]:@lg:row-start-2 [&>*:nth-child(3)]:@lg:col-start-3 [&>*:nth-child(3)]:@lg:col-span-3">
                 {/* Sandwiches Card Content */}
                 {menu.sandwiches.map((sandwich) => {
                     return (

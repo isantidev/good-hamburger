@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import Nav from "./components/layout/Nav";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -30,36 +29,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <nav className="max-w-screen h-fit bg-gray-800 text-white flex items-center justify-center gap-8 space-x-4 px-4 uppercase semi-bold">
-                    <div
-                        id="navigation-wrapper"
-                        className="flex max-w-7xl w-full mx-auto py-2 items-center justify-between"
-                    >
-                        <Link href={"/"}>
-                            <Image
-                                src="/logo.png"
-                                alt="Good Hamburger Logo"
-                                width={80}
-                                height={40}
-                                priority
-                            />
-                        </Link>
-                        <div
-                            id="navigation-links"
-                            className="inline-flex gap-8 *:after:block *:after:w-0 *:hover:after:w-full *:after:h-1 *:after:bg-white transform-fill *:after:transition-bg-width *:after:easy-in-out *:after:duration-300"
-                        >
-                            <Link href={"/"}>Menu</Link>
-                            <Link href={"/orders"}>Orders</Link>
-                        </div>
-                        <Image
-                            src="/cart-icon.svg"
-                            alt="Cart Icon"
-                            width={40}
-                            height={40}
-                            priority
-                        />
-                    </div>
-                </nav>
+                <Nav />
                 <main>{children}</main>
             </body>
         </html>
