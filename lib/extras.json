@@ -1,4 +1,4 @@
 [
-    { "id": 1, "name": "Fries", "price": 2.0 },
-    { "id": 2, "name": "Soft Drink", "price": 2.5 }
+    { "id": 1, "name": "Fries", "price": 2.0, "imageName": "fries" },
+    { "id": 2, "name": "Soft Drink", "price": 2.5, "imageName": "soda" }
 ]
