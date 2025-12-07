@@ -1,6 +1,6 @@
 import { Food } from "@/lib/types/menu.type";
 
-class DiscountCalc {
+export class DiscountCalc {
     private readonly SANDWICH_TYPE = "sandwich";
     private readonly SOFT_DRINK_NAME = "soda";
     private readonly FRIES_NAME = "fries";
@@ -30,17 +30,13 @@ class DiscountCalc {
         });
 
         let discountPercentage = 0;
-        let appliedRule: string | null = null;
 
         if (sandwichCount >= 1 && extrasCount >= 2) {
             discountPercentage = 0.2;
-            appliedRule = "1 Sandwich + 2 extras (20% Discount)";
         } else if (sandwichCount >= 1 && sodaCount >= 1) {
             discountPercentage = 0.15;
-            appliedRule = "1 Sandwich + 1 soft drink (15% Discount )";
         } else if (sandwichCount >= 1 && friesCount >= 1) {
             discountPercentage = 0.1;
-            appliedRule = "1 Sandwich + 1 Fries (10% Discount)";
         }
 
         const finalDiscount = normalTotal * discountPercentage;
@@ -50,7 +46,6 @@ class DiscountCalc {
             normalTotal: parseFloat(normalTotal.toFixed(2)),
             finalDiscount: parseFloat(finalDiscount.toFixed(2)),
             finalTotal: parseFloat(finalTotal.toFixed(2)),
-            appliedRule: appliedRule,
         };
     }
 }
