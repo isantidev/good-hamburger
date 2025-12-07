@@ -2,7 +2,7 @@ type Food = {
     id: number;
     name: string;
     price: number;
-    type: string;
+    type: "sandwich" | "extra";
     imageName: string;
 };
 

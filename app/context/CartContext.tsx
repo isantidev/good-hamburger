@@ -32,13 +32,14 @@ export function CartProvider({ children }: ContextChildren) {
     // Remove item from cart
     const removeFromCart = (
         itemId: number,
-        itemType: typeof SANDWICH | typeof EXTRA
+        itemType: "sandwich" | "extra"
     ): void => {
         setCartItems((prevItems) =>
             prevItems.filter(
-                (item) => item.id !== itemId && item.type !== itemType
+                (item) => item.id !== itemId || item.type !== itemType
             )
         );
+        console.log("Removed item:", itemId, itemType);
     };
 
     // Clear the cart
@@ -48,7 +49,12 @@ export function CartProvider({ children }: ContextChildren) {
 
     return (
         <CartContext.Provider
-            value={{ cartItems, addToCart, removeFromCart, clearCart }}
+            value={{
+                cartItems,
+                addToCart,
+                removeFromCart,
+                clearCart,
+            }}
         >
             {children}
         </CartContext.Provider>

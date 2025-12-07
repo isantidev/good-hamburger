@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Cart } from "../ui/CartContent";
 
 export default function Nav() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,13 +51,26 @@ export default function Nav() {
                     <Link href={"/#menu"}>Menu</Link>
                     <Link href={"/orders"}>Orders</Link>
                 </div>
-                <Image
-                    src="/cart-icon.svg"
-                    alt="Cart Icon"
-                    width={40}
-                    height={40}
-                    priority
-                />
+                <div className="relative">
+                    <Image
+                        className="cursor-pointer"
+                        src="/icons/cart-icon.svg"
+                        alt="Cart Icon"
+                        width={40}
+                        height={40}
+                        priority
+                        onClick={() => {
+                            setIsCartOpen(!isCartOpen);
+                            console.log(
+                                "Cart icon clicked, isCartOpen:",
+                                !isCartOpen
+                            );
+                        }}
+                    />
+                    {isCartOpen && (
+                        <Cart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+                    )}
+                </div>
             </div>
         </nav>
     );
