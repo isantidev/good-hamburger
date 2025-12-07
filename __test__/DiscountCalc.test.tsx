@@ -48,8 +48,6 @@ describe("DiscountCalc class", () => {
         });
     });
 
-    // ---
-
     describe("Rule 2: 1 Sandwich + 1 Soft Drink = 15% discount", () => {
         const products: Food[] = [burger, soda];
         const total = 5.0 + 2.5; // 7.50
@@ -66,8 +64,6 @@ describe("DiscountCalc class", () => {
         });
     });
 
-    // ---
-
     describe("Rule 3: 1 Sandwich + 1 Fries = 10% discount", () => {
         const products: Food[] = [burger, fries];
         const total = 5.0 + 2.0;
@@ -82,8 +78,6 @@ describe("DiscountCalc class", () => {
             expect(result.finalTotal).toBe(expectedFinal);
         });
     });
-
-    // ---
 
     describe("No discount cases", () => {
         it("should not apply any discount for only sandwich", () => {
