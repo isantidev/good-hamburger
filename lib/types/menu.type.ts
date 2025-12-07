@@ -1,4 +1,4 @@
-type Food = {
+export type Food = {
     id: number;
     name: string;
     price: number;
