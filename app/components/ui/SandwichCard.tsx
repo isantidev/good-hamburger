@@ -7,7 +7,7 @@ export default function SandwichCard(content: Sandwich) {
     const { addToCart } = useCart();
 
     return (
-        <article className="">
+        <article className="max-w-3xl w-fit px-8 mx-auto flex flex-col xl:flex-row justify-center xl:justify-evenly items-center hover:scale-105 hover:[&>img]:rotate-12 transition-transform bg-white p-4 rounded-lg shadow-orange-950 hover:shadow-xl gap-4 ">
             <Image
                 src={imageUrl}
                 alt={`sandwich ${content.name}`}
@@ -18,16 +18,18 @@ export default function SandwichCard(content: Sandwich) {
                 }}
                 loading="lazy"
             />
-            <div className="">
-                <h3>{content.name}</h3>
-                <p>Price: ${content.price.toFixed(2)}</p>
+            <div className="flex flex-col items-center lg:items-start gap-2">
+                <div className="[&>h3]:font-extrabold text-xl lg:text-2xl [&>p]:font-medium [&>p]:text-lg lg:[&>p]:text-xl text-center lg:text-left">
+                    <h3>{content.name}</h3>
+                    <p>Price: ${content.price.toFixed(2)}</p>
+                </div>
+                <button
+                    className="bg-yellow-400 text-black font-medium py-3 px-6 rounded cursor-pointer hover:scale-105 transition-transform mt-4"
+                    onClick={() => addToCart(content)}
+                >
+                    Add to cart
+                </button>
             </div>
-            <button
-                className="bg-yellow-400 text-black font-bold py-2 px-4 rounded pointer hover:scale-105 transition-transform"
-                onClick={() => addToCart(content)}
-            >
-                Add to cart +
-            </button>
         </article>
     );
 }

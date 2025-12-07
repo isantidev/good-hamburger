@@ -1,10 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import SandwichCard from "./SandwichCard";
-import ExtraCard from "./ExtraCard";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { getMenuData } from "@/lib/data/menu";
 import { Menu } from "@/lib/types/menu.type";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+
+const SandwichCard = lazy(() => {
+    new Promise<typeof import("./SandwichCard")>((resolve) => {
+        setTimeout(() => resolve(import("./SandwichCard")), 500);
+    });
+    return import("./SandwichCard");
+});
+
+const ExtraCard = lazy(() => {
+    new Promise<typeof import("./ExtraCard")>((resolve) => {
+        setTimeout(() => resolve(import("./ExtraCard")), 500);
+    });
+    return import("./ExtraCard");
+});
 
 const useFilter = () => {
     const [filter, setFilter] = useState<string>("all");
@@ -12,45 +25,61 @@ const useFilter = () => {
 };
 
 export default function MenuContent() {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [menu, setMenu] = useState<Menu>({ extras: [], sandwiches: [] });
 
     const { filter, setFilter } = useFilter();
 
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
+
+    // Sync URL to State and State to URL
+    useEffect(() => {
+        const urlFilter = searchParams.get("filter") || "all";
+
+        if (filter !== urlFilter) {
+            setFilter(urlFilter);
+        }
+    }, [searchParams, setFilter, filter]);
+
+    const handleFilterChange = (newFilter: string) => {
+        setFilter(newFilter);
+
+        const params = new URLSearchParams(searchParams);
+
+        if (newFilter === "all") {
+            params.delete("filter");
+        } else {
+            params.set("filter", newFilter);
+        }
+
+        replace(`${pathname}?${params.toString()}`, { scroll: false });
+    };
+
     useEffect(() => {
         async function fetchMenu() {
             try {
-                setIsLoading(true);
-
                 // Simulate delay of 1 second
                 await new Promise((resolve) => setTimeout(resolve, 1000));
 
                 const data = await getMenuData().then((data) => data[0]);
                 setMenu(data);
-                setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching menu data:", error);
-            } finally {
-                setIsLoading(false);
             }
         }
 
         fetchMenu();
     }, []);
 
-    // Show the correct sections based on the filter
     const showExtras = filter === "all" || filter === "extras";
     const showSandwiches = filter === "all" || filter === "sandwiches";
 
-    if (isLoading) {
-        return <p className="p-4 text-center">Loading menu...</p>;
-    }
-
     return (
         <>
-            <div className="w-full flex justify-center gap-4 mb-6 col-span-1 @lg:col-span-full row-start-1">
+            <div className="w-full flex justify-center gap-4 mb-6 col-span-full row-start-1">
                 <button
-                    onClick={() => setFilter("all")}
+                    onClick={() => handleFilterChange("all")}
                     className={`px-4 py-2 rounded-full font-medium transition-colors ${
                         filter === "all"
                             ? "bg-black text-white"
@@ -60,7 +89,7 @@ export default function MenuContent() {
                     All
                 </button>
                 <button
-                    onClick={() => setFilter("sandwiches")}
+                    onClick={() => handleFilterChange("sandwiches")}
                     className={`px-4 py-2 rounded-full font-medium transition-colors ${
                         filter === "sandwiches"
                             ? "bg-black text-white"
@@ -70,7 +99,7 @@ export default function MenuContent() {
                     Sandwiches
                 </button>
                 <button
-                    onClick={() => setFilter("extras")}
+                    onClick={() => handleFilterChange("extras")}
                     className={`px-4 py-2 rounded-full font-medium transition-colors ${
                         filter === "extras"
                             ? "bg-black text-white"
@@ -81,28 +110,42 @@ export default function MenuContent() {
                 </button>
             </div>
 
-            {showExtras && (
-                <aside className="w-full row-start-2 @lg:row-start-2 @lg:col-start-2">
-                    {menu.extras.map((extra) => {
-                        return (
-                            <ExtraCard key={`extra-${extra.id}`} {...extra} />
-                        );
-                    })}
-                </aside>
-            )}
-
-            {showSandwiches && (
-                <section className="w-full grid grid-cols-1 grid-flow-row gap-4 row-start-3 @lg:grid-cols-7 @lg:grid-rows-2 @lg:row-start-2 @lg:col-start-1 [&>*:nth-child(1)]:@lg:col-span-3 [&>*:nth-child(2)]:@lg:col-span-3 [&>*:nth-child(2)]:@lg:col-start-5 [&>*:nth-child(3)]:@lg:row-start-2 [&>*:nth-child(3)]:@lg:col-start-3 [&>*:nth-child(3)]:@lg:col-span-3">
-                    {menu.sandwiches.map((sandwich) => {
-                        return (
-                            <SandwichCard
-                                key={`sandwich-${sandwich.id}`}
-                                {...sandwich}
-                            />
-                        );
-                    })}
-                </section>
-            )}
+            <Suspense fallback={<p>Loading the Extras...</p>}>
+                {showExtras && (
+                    <aside
+                        className={`w-full grid gap-4 row-start-2 ${
+                            filter === "extras"
+                                ? "grid-cols-1 lg:grid-cols-2"
+                                : filter === "all"
+                                ? "grid-cols-2 lg:grid-cols-1 lg:col-start-3"
+                                : ""
+                        }`}
+                    >
+                        {menu.extras.map((extra) => {
+                            return (
+                                <ExtraCard
+                                    key={`extra-${extra.id}`}
+                                    {...extra}
+                                />
+                            );
+                        })}
+                    </aside>
+                )}
+            </Suspense>
+            <Suspense fallback={<p>Loading the Sandwiches...</p>}>
+                {showSandwiches && (
+                    <section className="w-full grid grid-cols-1 grid-flow-row lg:grid-cols-2 lg:col-span-2 gap-4">
+                        {menu.sandwiches.map((sandwich) => {
+                            return (
+                                <SandwichCard
+                                    key={`sandwich-${sandwich.id}`}
+                                    {...sandwich}
+                                />
+                            );
+                        })}
+                    </section>
+                )}
+            </Suspense>
         </>
     );
 }

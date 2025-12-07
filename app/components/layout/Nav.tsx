@@ -27,7 +27,7 @@ export default function Nav() {
 
     return (
         <nav
-            className={`sticky top-0 max-w-screen h-fit flex items-center justify-center gap-8 space-x-4 px-4 uppercase *:semi-bold text-white transition-colors duration-300 ${
+            className={`sticky top-0 max-w-screen h-fit flex items-center justify-center gap-8 space-x-4 px-4 uppercase *:semi-bold text-white transition-colors duration-300 z-9999 ${
                 isScrolled ? "bg-red-900/90" : "bg-red-950"
             }`}
         >
@@ -61,10 +61,6 @@ export default function Nav() {
                         priority
                         onClick={() => {
                             setIsCartOpen(!isCartOpen);
-                            console.log(
-                                "Cart icon clicked, isCartOpen:",
-                                !isCartOpen
-                            );
                         }}
                     />
                     {isCartOpen && (

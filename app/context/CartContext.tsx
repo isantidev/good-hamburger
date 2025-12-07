@@ -39,7 +39,6 @@ export function CartProvider({ children }: ContextChildren) {
                 (item) => item.id !== itemId || item.type !== itemType
             )
         );
-        console.log("Removed item:", itemId, itemType);
     };
 
     // Clear the cart
