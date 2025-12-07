@@ -1,14 +1,14 @@
 import { Sandwich } from "@/lib/types/menu.type";
 import Image from "next/image";
-import { useCart } from "@/app/context/CartContext";
+import { AddToCart } from "./AddToCartButton";
 
 export default function SandwichCard(content: Sandwich) {
     const imageUrl = `/sandwich/${content.name.toLowerCase()}/mid.webp`;
-    const { addToCart } = useCart();
 
     return (
         <article className="max-w-3xl w-fit px-8 mx-auto flex flex-col xl:flex-row justify-center xl:justify-evenly items-center hover:scale-105 hover:[&>img]:rotate-12 transition-transform bg-white p-4 rounded-lg shadow-orange-950 hover:shadow-xl gap-4 ">
             <Image
+                className="max-w-86 w-64 md:w-70 lg:w-full"
                 src={imageUrl}
                 alt={`sandwich ${content.name}`}
                 width={350}
@@ -23,12 +23,7 @@ export default function SandwichCard(content: Sandwich) {
                     <h3>{content.name}</h3>
                     <p>Price: ${content.price.toFixed(2)}</p>
                 </div>
-                <button
-                    className="bg-yellow-400 text-black font-medium py-3 px-6 rounded cursor-pointer hover:scale-105 transition-transform mt-4"
-                    onClick={() => addToCart(content)}
-                >
-                    Add to cart
-                </button>
+                <AddToCart {...content} />
             </div>
         </article>
     );
