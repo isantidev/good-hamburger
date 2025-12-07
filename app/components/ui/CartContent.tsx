@@ -22,7 +22,9 @@ export function Cart({
 
     return (
         <article className="absolute w-lg flex flex-col top-20 -right-20 text-black bg-white border border-gray-300 rounded-lg p-4 shadow-lg z-50">
-            <h3 className="font-bold text-xl w-fit">Your Current Cart</h3>
+            <h3 className="font-bold text-xl w-full text-center">
+                Your Current Cart
+            </h3>
             <tr className="flex flex-col gap-2 mt-4">
                 <thead className="sr-only">
                     <td>
@@ -37,7 +39,7 @@ export function Cart({
                     <td>Price</td>
                 </thead>
                 <hr />
-                <tbody className="my-8 flex flex-col [&>tr]:border-b [&>tr]:border-gray-400 [&>tr]:py-2">
+                <tbody className="my-8 flex flex-col [&>tr]:border-b [&>tr]:border-gray-400 [&>tr]:pb-2">
                     {!cartItems.length && (
                         <>
                             <tr className="grid grid-cols-[auto_1fr_auto_4rem] gap-2 items-center">
@@ -73,7 +75,7 @@ export function Cart({
                 }}
                 disabled={!isSandwich}
             >
-                {!isSandwich ? "Add a Sandwich" : "Let's Checkout"}
+                {!isSandwich ? "Add a Sandwich to proceed" : "Let's Checkout"}
                 {/* <Image
                         className="bg-black rounded-full p-1"
                         src={"/icons/cart-checkout-icon.svg"}

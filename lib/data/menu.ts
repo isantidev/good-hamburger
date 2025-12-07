@@ -3,13 +3,15 @@ import extras from "@/lib/extras.json";
 import sandwiches from "@/lib/sandwich.json";
 
 export async function getMenuData(): Promise<Menu[]> {
-    return [{ extras, sandwiches }];
+    return [
+        { extras: extras as Extra[], sandwiches: sandwiches as Sandwich[] },
+    ];
 }
 
 export async function getSandwiches(): Promise<Sandwich[]> {
-    return sandwiches;
+    return sandwiches as Sandwich[];
 }
 
 export async function getExtras(): Promise<Extra[]> {
-    return extras;
+    return extras as Extra[];
 }
