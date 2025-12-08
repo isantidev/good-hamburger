@@ -1,6 +1,6 @@
 import { Sandwich } from "@/lib/types/menu.type";
 import Image from "next/image";
-import { AddToCart } from "./AddToCartButton";
+import { AddToCart } from "@/app/components/utils/AddToCartButton";
 
 export default function SandwichCard(content: Sandwich) {
     const imageUrl = `/sandwich/${content.name.toLowerCase()}/mid.webp`;

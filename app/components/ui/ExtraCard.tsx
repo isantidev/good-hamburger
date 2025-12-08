@@ -1,7 +1,7 @@
 import { Extra } from "@/lib/types/menu.type";
 import Image from "next/image";
 import { useCart } from "@/app/context/CartContext";
-import { AddToCart } from "./AddToCartButton";
+import { AddToCart } from "@/app/components/utils/AddToCartButton";
 
 export default function ExtraCard(content: Extra) {
     const imageUrl = `/extra/${content.imageName.toLowerCase()}/small.webp`;

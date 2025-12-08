@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { getMenuData } from "@/lib/data/menu";
 import { Menu } from "@/lib/types/menu.type";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { Loading } from "@/app/components/utils/Loading";
 
 const SandwichCard = lazy(() => {
     new Promise<typeof import("./SandwichCard")>((resolve) => {
@@ -110,7 +111,7 @@ export default function MenuContent() {
                 </button>
             </div>
 
-            <Suspense fallback={<p>Loading the Extras...</p>}>
+            <Suspense fallback={<Loading children="Loading Extras" />}>
                 {showExtras && (
                     <aside
                         className={`w-full grid gap-4 row-start-2 ${
@@ -132,7 +133,7 @@ export default function MenuContent() {
                     </aside>
                 )}
             </Suspense>
-            <Suspense fallback={<p>Loading the Sandwiches...</p>}>
+            <Suspense fallback={<Loading children="Loading Sandwiches" />}>
                 {showSandwiches && (
                     <section className="w-full grid grid-cols-1 grid-flow-row lg:grid-cols-2 lg:col-span-2 gap-4">
                         {menu.sandwiches.map((sandwich) => {
