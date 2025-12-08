@@ -5,7 +5,6 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8)
 ![pnpm](https://img.shields.io/badge/pnpm-fast-yellow)
 ![Vitest](https://img.shields.io/badge/tests-Vitest-6E9F18)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 A modern web application built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **pnpm**, featuring **Vitest** for fast and lightweight testing.
 
