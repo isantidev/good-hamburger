@@ -11,11 +11,6 @@ A modern web application built with **Next.js**, **TypeScript**, **Tailwind CSS*
 
 ---
 
-## 🔗 Repository
-
-https://github.com/isantidev/good-hamburger
-
----
 
 ## 🚀 Tech Stack
 
@@ -33,3 +28,58 @@ https://github.com/isantidev/good-hamburger
 
 ```bash
 pnpm install
+```
+
+### 2. Run the development server
+
+```bash
+pnpm run dev
+```
+
+Application runs at:  
+👉 http://localhost:3000
+
+---
+
+## 📦 Production
+
+### Build the app
+
+```bash
+pnpm run build
+```
+
+### Launch production server
+
+```bash
+pnpm run start
+```
+
+---
+
+## 🧪 Tests
+
+Run all tests using Vitest:
+
+```bash
+pnpm run test
+```
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── app/                # Next.js App Router
+├── lib/                # Utilities / shared modules
+├── public/             # Static files
+├── __test__/           # Vitest test files
+├── tailwind.config.js  # Tailwind CSS config
+├── postcss.config.js   # PostCSS config
+├── next.config.ts      # Next.js config
+├── tsconfig.json       # TypeScript config
+├── package.json
+└── pnpm-lock.yaml
+```
+
