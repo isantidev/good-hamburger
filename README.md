@@ -1,8 +1,8 @@
 # good-hamburger 🍔
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38bdf8)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8)
 ![pnpm](https://img.shields.io/badge/pnpm-fast-yellow)
 ![Vitest](https://img.shields.io/badge/tests-Vitest-6E9F18)
 ![License](https://img.shields.io/badge/License-MIT-green)
