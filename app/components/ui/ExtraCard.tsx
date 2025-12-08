@@ -8,7 +8,7 @@ export default function ExtraCard(content: Extra) {
     const { addToCart } = useCart();
 
     return (
-        <article className="max-w-sm w-fit px-6 mx-auto flex flex-col justify-center items-center hover:scale-105 hover:[&>img]:-rotate-6 transition-transform bg-zinc-900 p-4 rounded-lg shadow-amber-950 hover:shadow-lg gap-4 ">
+        <article className="max-w-sm px-6 mx-auto flex sm:flex-col justify-center items-center hover:scale-105 hover:[&>img]:-rotate-6 transition-transform bg-zinc-900 p-4 rounded-lg shadow-amber-950 hover:shadow-lg gap-4 ">
             <Image
                 className="max-w-52 w-40 md:w-48 lg:w-full"
                 src={imageUrl}

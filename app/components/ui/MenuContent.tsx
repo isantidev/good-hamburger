@@ -118,7 +118,7 @@ export default function MenuContent() {
                             filter === "extras"
                                 ? "grid-cols-1 lg:grid-cols-2"
                                 : filter === "all"
-                                ? "grid-cols-2 lg:grid-cols-1 lg:col-start-3"
+                                ? "sm:grid-cols-2 lg:grid-cols-1 lg:col-start-3"
                                 : ""
                         }`}
                     >
