@@ -37,7 +37,7 @@ export default function Nav() {
             >
                 <Link href={"/"}>
                     <Image
-                        src="/logo.png"
+                        src="/logo.webp"
                         alt="Good Hamburger Logo"
                         width={80}
                         height={40}
@@ -48,7 +48,7 @@ export default function Nav() {
                     id="navigation-links"
                     className="inline-flex gap-8 *:after:block *:after:w-0 *:hover:after:w-full *:after:h-1 *:after:bg-white transform-fill *:after:transition-bg-width *:after:easy-in-out *:after:duration-300"
                 >
-                    <Link href={"/#menu"}>Menu</Link>
+                    <Link href={"/"}>Menu</Link>
                     <Link href={"/orders"}>Orders</Link>
                 </div>
                 <div className="relative">

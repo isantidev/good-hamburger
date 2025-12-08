@@ -24,8 +24,8 @@ export class DiscountCalc {
             if (product.type === "extra") {
                 extrasCount++;
 
-                if (product.name === this.SOFT_DRINK_NAME) sodaCount++;
-                else if (product.name === this.FRIES_NAME) friesCount++;
+                if (product.imageName === this.SOFT_DRINK_NAME) sodaCount++;
+                else if (product.imageName === this.FRIES_NAME) friesCount++;
             }
         });
 

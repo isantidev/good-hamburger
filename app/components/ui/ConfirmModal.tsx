@@ -102,16 +102,13 @@ export function OrderConfirmationModal({
 
     return (
         <div className="fixed inset-0 z-9999 flex items-center justify-center p-4">
-            {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black bg-opacity-50"
                 onClick={onClose}
             />
 
-            {/* Modal */}
             <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b">
+                <header className="flex items-center justify-between p-6 border-b">
                     <div className="flex items-center gap-2">
                         <h2 className="text-xl font-semibold text-gray-900">
                             Confirm Your Order
@@ -136,11 +133,11 @@ export function OrderConfirmationModal({
                             />
                         </svg>
                     </button>
-                </div>
+                </header>
 
                 {/* Success Message */}
                 {orderSuccess && (
-                    <div className="absolute inset-0 bg-white bg-opacity-95 flex items-center justify-center z-10 rounded-lg">
+                    <aside className="absolute inset-0 bg-white bg-opacity-95 flex items-center justify-center z-10 rounded-lg">
                         <div className="text-center">
                             <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                                 <svg
@@ -164,12 +161,10 @@ export function OrderConfirmationModal({
                                 Your order has been placed successfully.
                             </p>
                         </div>
-                    </div>
+                    </aside>
                 )}
 
-                {/* Content */}
-                <div className="p-6 space-y-6">
-                    {/* User Name Input */}
+                <main className="p-6 space-y-6">
                     <div>
                         <label
                             htmlFor="userName"
@@ -183,7 +178,7 @@ export function OrderConfirmationModal({
                             value={userName}
                             onChange={(e) => setUserName(e.target.value)}
                             placeholder="Enter your name"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                            className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                             disabled={isSubmitting}
                         />
                     </div>
@@ -267,10 +262,10 @@ export function OrderConfirmationModal({
                             </span>
                         </div>
                     </div>
-                </div>
+                </main>
 
                 {/* Footer */}
-                <div className="flex gap-3 p-6 border-t bg-gray-50">
+                <footer className="flex gap-3 p-6 border-t bg-gray-50">
                     <button
                         onClick={onClose}
                         disabled={isSubmitting}
@@ -285,7 +280,7 @@ export function OrderConfirmationModal({
                     >
                         {isSubmitting ? "Processing..." : "Confirm Order"}
                     </button>
-                </div>
+                </footer>
             </div>
         </div>
     );
