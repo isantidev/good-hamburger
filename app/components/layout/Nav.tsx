@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Cart } from "../ui/CartContent";
+import { Cart } from "@/app/components/ui/CartContent";
 
 export default function Nav() {
     const [isScrolled, setIsScrolled] = useState(false);
