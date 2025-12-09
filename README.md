@@ -10,14 +10,13 @@ A modern web application built with **Next.js**, **TypeScript**, **Tailwind CSS*
 
 ---
 
-
 ## 🚀 Tech Stack
 
-- **Next.js** – Production-ready React framework  
-- **TypeScript** – Strong typing for scalable code  
-- **Tailwind CSS** – Utility-first styling  
-- **pnpm** – Fast, disk-efficient package manager  
-- **Vitest** – Ultra-fast unit testing  
+-   **Next.js** – Production-ready React framework
+-   **TypeScript** – Strong typing for scalable code
+-   **Tailwind CSS** – Utility-first styling
+-   **pnpm** – Fast, disk-efficient package manager
+-   **Vitest** – Ultra-fast unit testing
 
 ---
 
@@ -70,15 +69,35 @@ pnpm run test
 
 ```
 .
-├── app/                # Next.js App Router
-├── lib/                # Utilities / shared modules
-├── public/             # Static files
-├── __test__/           # Vitest test files
-├── tailwind.config.js  # Tailwind CSS config
-├── postcss.config.js   # PostCSS config
-├── next.config.ts      # Next.js config
-├── tsconfig.json       # TypeScript config
+├── app/                 # Next.js App Router
+├── lib/                 # Utilities / shared modules
+├── public/              # Static files
+├── __test__/            # Vitest test files
+├── postcss.config.mjs   # PostCSS config
+├── next.config.ts       # Next.js config
+├── tsconfig.json        # TypeScript config
 ├── package.json
 └── pnpm-lock.yaml
 ```
 
+_note: you can fetch the data as a server using the api route_
+
+```
+// Get the complete menu
+http://localhost:3000/api/menu
+
+// Get the sandwiches
+http://localhost:3000/api/sandwiches
+
+// Get the extras
+http://localhost:3000/api/extras
+
+// if you need an specific sandwich or extra, use the /{itemId}
+http://localhost:3000/api/sandwiches/{itemId}
+http://localhost:3000/api/extras/{itemId}
+```
+
+## Licence
+
+Images taken from [Free Pick](https://www.freepik.com/)
+You can see a initial wirefrime here [Figma Wireframe](https://www.figma.com/design/ZztlvFHyw0B8UbfPuv5xd8/Untitled?node-id=0-1&t=lRFxs3rYI0MpPjQe-1)

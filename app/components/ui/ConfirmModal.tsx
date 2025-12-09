@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Order } from "@/lib/types/order.type";
 import { Food } from "@/lib/types/menu.type";
 import { DiscountCalc } from "@/app/utils/DiscountCalc";
+import { useCart } from "@/app/context/CartContext";
 
 // Utility function to save order to localStorage
 const saveOrderToLocalStorage = (order: Order) => {
@@ -44,6 +45,7 @@ export function OrderConfirmationModal({
         finalDiscount: 0,
         finalTotal: 0,
     });
+    const { clearCart } = useCart();
 
     const discountCalc = new DiscountCalc();
 
@@ -90,6 +92,7 @@ export function OrderConfirmationModal({
                     setOrderSuccess(false);
                     setUserName("");
                     onClose();
+                    clearCart();
                 }, 2000);
             } else {
                 setIsSubmitting(false);

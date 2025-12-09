@@ -13,7 +13,7 @@ export function Cart({
     isOpen: boolean;
     setIsOpen: (open: boolean) => void;
 }) {
-    const { cartItems } = useCart();
+    const { cartItems, clearCart } = useCart();
     const [isSandwich, setIsSandwich] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -39,6 +39,13 @@ export function Cart({
 
                     <div className="mt-4">
                         <hr className="border-gray-300" aria-hidden="true" />
+                        <button
+                            className="cursor-pointer w-full text-end text-amber-800 font-ligth text-sm disabled:hidden"
+                            disabled={cartItems.length < 1}
+                            onClick={() => clearCart()}
+                        >
+                            Clear Cart
+                        </button>
 
                         {!cartItems.length ? (
                             <div className="my-8">
@@ -60,13 +67,13 @@ export function Cart({
                                 </div>
                             </div>
                         ) : (
-                            <ul className="my-8 flex flex-col [&>li]:border-b [&>li]:border-gray-400 [&>li]:pb-2">
+                            <table className="my-8 flex flex-col [&>li]:border-b [&>li]:border-gray-400 [&>li]:pb-2">
                                 {cartItems.map((item) => (
-                                    <li key={`${item.type}-${item.id}`}>
+                                    <tbody key={`${item.type}-${item.id}`}>
                                         <CartItem item={item} />
-                                    </li>
+                                    </tbody>
                                 ))}
-                            </ul>
+                            </table>
                         )}
                     </div>
 
